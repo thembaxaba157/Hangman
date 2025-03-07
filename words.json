@@ -1,0 +1,72 @@
+{
+    "movies": {
+      "easy": [
+        { "word": "jaws", "hint": "Shark thriller directed by Spielberg" },
+        { "word": "rocky", "hint": "Boxing movie featuring Sylvester Stallone" },
+        { "word": "shrek", "hint": "Animated ogre with a talking donkey" },
+        { "word": "frozen", "hint": "Disney movie featuring Elsa and Anna" },
+        { "word": "avatar", "hint": "James Cameron's blue-skinned aliens" }
+      ],
+      "medium": [
+        { "word": "inception", "hint": "A movie about dreams within dreams" },
+        { "word": "gladiator", "hint": "Russell Crowe fights in the Colosseum" },
+        { "word": "interstellar", "hint": "A space exploration film directed by Nolan" },
+        { "word": "black swan", "hint": "Psychological thriller about ballet" },
+        { "word": "goodfellas", "hint": "Classic mobster movie" }
+      ],
+      "hard": [
+        { "word": "amadeus", "hint": "Biographical film about Mozart" },
+        { "word": "memento", "hint": "A movie told in reverse order" },
+        { "word": "whiplash", "hint": "Movie about a drummer and his harsh instructor" },
+        { "word": "mulholland drive", "hint": "Surreal mystery directed by David Lynch" },
+        { "word": "requiem for a dream", "hint": "Intense drama about addiction" }
+      ]
+    },
+    "football_clubs": {
+      "easy": [
+        { "word": "barcelona", "hint": "Spanish club known for tiki-taka" },
+        { "word": "chelsea", "hint": "London-based club, known as The Blues" },
+        { "word": "liverpool", "hint": "English club with Anfield as their stadium" },
+        { "word": "real madrid", "hint": "Spanish club with the most UCL titles" },
+        { "word": "manchester united", "hint": "Red Devils from England" }
+      ],
+      "medium": [
+        { "word": "dortmund", "hint": "German club with a yellow and black kit" },
+        { "word": "galatasaray", "hint": "Turkish club known for its passionate fans" },
+        { "word": "benfica", "hint": "Portuguese club with an eagle as its symbol" },
+        { "word": "sevilla", "hint": "Spanish club known for Europa League success" },
+        { "word": "ajax", "hint": "Dutch club famous for youth development" }
+      ],
+      "hard": [
+        { "word": "feyenoord", "hint": "Dutch club from Rotterdam" },
+        { "word": "cruzeiro", "hint": "Brazilian club with blue stars" },
+        { "word": "partizan", "hint": "Serbian club with black and white stripes" },
+        { "word": "boca juniors", "hint": "Argentinian club with fierce rivalry against River Plate" },
+        { "word": "sporting cp", "hint": "Portuguese club known for producing Cristiano Ronaldo" }
+      ]
+    },
+    "cities": {
+      "easy": [
+        { "word": "paris", "hint": "City of love" },
+        { "word": "london", "hint": "Capital of the UK" },
+        { "word": "tokyo", "hint": "Largest city in Japan" },
+        { "word": "new york", "hint": "The Big Apple" },
+        { "word": "rome", "hint": "Capital of Italy" }
+      ],
+      "medium": [
+        { "word": "mumbai", "hint": "Financial capital of India" },
+        { "word": "toronto", "hint": "Canada's largest city" },
+        { "word": "madrid", "hint": "Capital of Spain" },
+        { "word": "melbourne", "hint": "Australian city known for coffee" },
+        { "word": "cape town", "hint": "South African city with Table Mountain" }
+      ],
+      "hard": [
+        { "word": "reykjavik", "hint": "Capital of Iceland" },
+        { "word": "bucharest", "hint": "Capital of Romania" },
+        { "word": "addis ababa", "hint": "Capital of Ethiopia" },
+        { "word": "ulaanbaatar", "hint": "Capital of Mongolia" },
+        { "word": "tbilisi", "hint": "Capital of Georgia (country)" }
+      ]
+    }
+  }
+  
