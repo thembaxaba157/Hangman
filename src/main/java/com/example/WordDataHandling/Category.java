@@ -1,4 +1,4 @@
-package com.example.DataHandling;
+package com.example.WordDataHandling;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,9 +33,15 @@ public class Category {
             (difficulty).size()));
     }
     return null;
+
+   
+
+
 }
     
-    
+    public ArrayList<Difficulty> getDifficulties(){
+        return new ArrayList<>(wordsByDifficulty.keySet());
+    }
     
     
     public enum Difficulty{
