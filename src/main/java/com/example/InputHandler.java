@@ -20,7 +20,7 @@ public class InputHandler {
         while(true){
                
             try{
-            
+                System.out.println("Please Enter a number");
                 num = this.scanner.nextInt();
                 if((num>=1 && num<=optionSize) || (isBackAvailable && num==0) || (isMenuAvailable && num==99)){
                     break;
@@ -33,12 +33,14 @@ public class InputHandler {
                         }
                         if(isMenuAvailable){
                             System.out.print(" or 99 to go to menu");
+                            
 
             }
+            System.out.println();
         }
     }
     catch(Exception e){
-        System.out.print("Invalid input. Please enter a number.");
+        System.out.print("Invalid input. ");
         continue;
 }
         
