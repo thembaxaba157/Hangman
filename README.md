@@ -52,7 +52,7 @@ The Hangman game is a word-guessing game where players try to complete a hidden 
 | **Hint Type**                   | **Cost (Points)** |
 |---------------------------------|------------------|
 | **Reveal a random letter**      | 5 Points        |
-| **Show the category of the word** | 3 Points        |
+| **Shows the fact about the word** | 3 Points        |
 | **Remove a wrong letter choice**  | 4 Points        |
 
 📌 **Players can buy hints anytime using available points.**  
