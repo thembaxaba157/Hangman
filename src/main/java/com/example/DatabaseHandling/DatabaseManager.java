@@ -22,6 +22,7 @@ public class DatabaseManager {
     public DatabaseManager(){
         this.dbUrl = DISK_DB_URL+"hangman.db";
         this.connection = initConnection();
+        initDatabase();
       
     }
 
@@ -37,7 +38,8 @@ public class DatabaseManager {
             
             return DriverManager.getConnection(this.dbUrl);
         } catch (Exception e) {
-            System.err.println("Database failed, trying to load in memory");
+            // System.err.println("Database failed, trying to load in memory");
+            e.printStackTrace();
             try {
                 
                 return DriverManager.getConnection("jdbc:sqlite::memory:");
@@ -99,6 +101,11 @@ public boolean addPlayer(String username){
     try {
         PreparedStatement statement = this.connection.prepareStatement("INSERT INTO players (username) VALUES (?)");
         statement.setString(1, username);
+        
+      
+        statement.setString(1, username);
+
+
         int effectedRows = statement.executeUpdate();
 
         if(effectedRows>0){
@@ -158,11 +165,11 @@ catch(Exception E){
 public ArrayList<String> getPlayers(){
     ArrayList<String> players = new ArrayList<String>();
     try {
-        String query = "SELECT player_id FROM players";
+        String query = "SELECT username FROM players";
         PreparedStatement statement = this.connection.prepareStatement(query);
         ResultSet result = statement.executeQuery();
         while(result.next()){
-            players.add(result.getString("player_id"));
+            players.add(result.getString("username"));
             }
         }catch(Exception e){
             System.err.println("Failed to get players");
@@ -216,7 +223,7 @@ public User loadPlayer(String username) {
 
                             if(resultSetHighScore.next()){
                                 int highScore = resultSetHighScore.getInt("highscore");
-                                Date date = resultSetHighScore.getDate("date");
+                                Date date = resultSetHighScore.getDate("date_played");
                                 user = new User(id, username1, points, new Score(highScore, date));
                             }
                     

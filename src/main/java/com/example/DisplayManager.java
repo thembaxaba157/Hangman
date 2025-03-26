@@ -21,7 +21,7 @@ public class DisplayManager {
         System.out.println("\nUser Management:");
         System.out.println("1. Create User");
         System.out.println("2. Load User");
-        System.out.println("3. Deleted User");
+        System.out.println("3. Delete User");
         System.out.println("4. View Current User");
         System.out.println("0. Menu\n");
     }

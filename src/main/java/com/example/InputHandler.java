@@ -55,7 +55,7 @@ public class InputHandler {
         String alphaNumString = "";
         while (true) {
             System.out.print("Enter username:\n >");
-            alphaNumString = this.scanner.nextLine();
+            alphaNumString = this.scanner.next();
             if (alphaNumString.matches("(?=.*[a-zA-Z])[a-zA-Z0-9]+") || alphaNumString.equals("-1")) {
                 break;
             } else {

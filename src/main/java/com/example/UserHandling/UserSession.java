@@ -29,7 +29,7 @@ public class UserSession {
                 return false;
             } else if (this.databaseManager.addPlayer(username)) {
                 this.user = this.databaseManager.loadPlayer(username);
-                if (!this.user.equals(null)) {
+                if (this.user != null) {
                     break;
                 }
             }
@@ -51,10 +51,10 @@ public class UserSession {
             DisplayManager.showOptions(players, true, true, "Select a player to load:");
             int num = inputHandler.enterInt(players.size(), true, true);
             if (num == 0) {
-                return false;
+                break;
             }
             if (num == 99) {
-                break;
+                return false;
             }
             if (num > 0 && num <= players.size()) {
                 this.user = this.databaseManager.loadPlayer(players.get(num - 1));
@@ -72,7 +72,7 @@ public class UserSession {
     public boolean deleteUserSession() {
         ArrayList<String> players = databaseManager.getPlayers();
         if (players.size() == 0) {
-            System.out.println("No players exist please a create one");
+            System.out.println("No players available for deletion");
             return false;
             }
             while (true) {
@@ -87,6 +87,11 @@ public class UserSession {
                         if (num > 0 && num <= players.size()) {
                             this.databaseManager.deletePlayer(players.get(num - 1));
                             System.out.println("Player deleted");
+
+                            if (this.user.getUsername().equals(players.get(num - 1))){
+                                this.user = null;
+                            }
+                            
                             return true;
                             }
                             }
@@ -97,15 +102,16 @@ public class UserSession {
 
     public boolean viewCurrUser() {
         
-        if (this.user.equals(null)) {
-            System.out.println("No user is currently logged in");
+        if (this.user == null) {
+            System.out.println("\nNo user is currently logged in");
             }
         else {
             DisplayManager.showUser(this.user);
         }
         DisplayManager.showOptions(new ArrayList<String>(), true, true, "");
+        System.out.println("\n");
         int optionNum = inputHandler.enterInt(0, true, true);
-        if(optionNum == 99){
+        if(optionNum == 0){
             return true;
         }
         return false;
