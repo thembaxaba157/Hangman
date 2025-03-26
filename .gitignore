@@ -46,3 +46,4 @@ buildNumber.properties
 hs_err_pid*
 replay_pid*
 /target/classes/com/example/Main.class
+/hangman.db

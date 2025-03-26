@@ -1,18 +1,23 @@
 package com.example;
 
 import com.example.State.GameState;
+import com.example.UserHandling.UserSession;
 import com.example.WordDataHandling.WordManager;
 
 public class Hangman {
     private GameState currGameState;
     private WordManager wordManager;
     private InputHandler inputHandler;
+    private UserSession userSession;
+
 
     public Hangman() {
         this.inputHandler = new InputHandler();
         this.wordManager = new WordManager();
+        this.userSession = new UserSession(this.inputHandler);
+
         this.currGameState = GameState.MENU;
-        
+            
 
     }
 
@@ -21,7 +26,6 @@ public class Hangman {
             switch (this.currGameState) {
                 case MENU:
                     menuSession();
-                    System.out.println("current state "+ this.currGameState.toString());
                     break;
 
                 case PICK_USER:
@@ -43,6 +47,7 @@ public class Hangman {
                     break;
             }
         }
+        System.out.println("Goodbye!");
 
     }
 
@@ -63,9 +68,46 @@ public class Hangman {
     }
 
     private void pickUserSession() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pickUserSession'");
+        DisplayManager.showUserMenu();
+        boolean success = false;
+        int choise = inputHandler.enterInt(4, true, false);
+        switch (choise) {
+            case 0:
+                this.currGameState = GameState.MENU;
+                break;
+            
+            // createUser
+            case 1:
+               success = this.userSession.createUserSession();
+               if(success){
+                this.currGameState = GameState.MENU;
+               }
+               break;
+            
+            case 2:
+               success = this.userSession.loadUserSession();
+               if(success){
+                this.currGameState = GameState.MENU;
+                }
+                break;
+            
+            case 3:
+            success = this.userSession.deleteUserSession();
+            if(success){
+                this.currGameState = GameState.MENU;
+                }
+                break;
+            
+            case 4:
+                success = this.userSession.viewCurrUser();
+                if(success){
+                    this.currGameState = GameState.MENU;
+                    }
+                    break;
+
     }
+            
+}
 
     private void menuSession() {
         DisplayManager.showMenu();
