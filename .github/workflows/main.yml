@@ -8,6 +8,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -24,10 +25,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.8.1'
-  
+
       - name: Install Node.js dependencies
         run: |
-            npm install @semantic-release/git @semantic-release/git @semantic-release/exec
+            npm install @semantic-release/git @semantic-release/exec @semantic-release/github
+
+      - name: Build with Maven
+        run: mvn clean install
+
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.HANGMAN_TOKEN }}
