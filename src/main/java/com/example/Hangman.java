@@ -1,6 +1,8 @@
 package com.example;
 
 import com.example.State.GameState;
+import com.example.GameHandler.GameSession;
+import com.example.UserHandling.User;
 import com.example.UserHandling.UserSession;
 import com.example.WordDataHandling.WordManager;
 
@@ -13,9 +15,8 @@ public class Hangman {
 
     public Hangman() {
         this.inputHandler = new InputHandler();
-        this.wordManager = new WordManager();
+        this.wordManager = new WordManager(this.inputHandler);
         this.userSession = new UserSession(this.inputHandler);
-
         this.currGameState = GameState.MENU;
             
 
@@ -32,8 +33,8 @@ public class Hangman {
                     pickUserSession();
                     break;
 
-                case PICK_WORD:
-                    pickWordSession();
+                case PLAY_MENU:
+                    PlayMenuSession();
                     break;
 
                 case GAMESESSION:
@@ -58,13 +59,68 @@ public class Hangman {
     }
 
     private void gameSession() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'gameSession'");
+
+        GameSession gameSession = new GameSession(inputHandler, wordManager.getGameSessionWord(), userSession.getUser());
+        boolean success = gameSession.play();
+        User gameSessionUser = gameSession.getUser();
+        userSession.setUser(gameSessionUser);
+        
+        if (success) {
+            DisplayManager.continuePlay();
+            int n = inputHandler.enterInt(2, false, false);
+
+
+            if (n == 2) {
+            userSession.updateScore();
+            userSession.resetScore();
+            this.currGameState = GameState.PLAY_MENU;
+            }
+            else if (n == 1){
+                wordManager.pickWordAgain();
+            }
+
+        }
+
+        else {
+            this.currGameState = GameState.PLAY_MENU;
+        }
+
+        userSession.updatePoints();
+        
+        
     }
 
-    private void pickWordSession() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pickWordSession'");
+    private void PlayMenuSession() {
+      DisplayManager.showPlayMenu();
+      int choice = inputHandler.enterInt(3, true, false);
+      boolean sucess = false;
+      switch (choice) {
+        case 0:
+        this.currGameState = GameState.MENU;
+        break;
+        
+        case 1:
+            if(userSession.getUser()==null){
+                System.out.println("You must select a user to play.");
+                break;
+            }
+            sucess = wordManager.pickWordSession();
+            if(sucess){
+                currGameState = GameState.GAMESESSION;
+            }
+           
+            break;
+        
+        case 2:
+            wordManager.displayAvailableCategories();
+            inputHandler.waitForAnyKey();
+            break;
+            
+        case 3:
+            DisplayManager.showRules();
+        
+      }
+
     }
 
     private void pickUserSession() {
@@ -114,7 +170,7 @@ public class Hangman {
         int choice = inputHandler.enterInt(3, true, false);
         switch (choice) {
             case 1:
-                this.currGameState = GameState.PICK_WORD;
+                this.currGameState = GameState.PLAY_MENU;
                 break;
             case 2:
                 this.currGameState = GameState.PICK_USER;
