@@ -1,13 +1,13 @@
 package com.example.DatabaseHandling;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.Date;
 
 import com.example.UserHandling.Score;
 import com.example.UserHandling.User;
@@ -259,5 +259,39 @@ public void deletePlayer(String string) {
             System.err.println("Failed to delete player");
             }
 }
+
+public void addScoreEntry(User user) {
+    try {
+        String addScoreSql = """
+        INSERT INTO scores (player_id, highscore, date_played)
+        VALUES (?, ?, ?)
+        """;
+        PreparedStatement addScoreStatement = this.connection.prepareStatement(addScoreSql);
+        addScoreStatement.setInt(1, user.getId());
+        addScoreStatement.setInt(2, user.getCurrScore().getScoreValue());
+        addScoreStatement.setDate(3, user.getCurrScore().getDate());
+        addScoreStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Failed to add score entry");
+            }
+            
+}
+
+public void updatePoints(User user) {
+    try {
+        String updatePointsSql = """
+            UPDATE points
+            SET points = ?
+            WHERE player_id = ?
+        """;
+       PreparedStatement updatePointsStatement = this.connection.prepareStatement(updatePointsSql);
+       updatePointsStatement.setInt(1, user.getPoints());
+       updatePointsStatement.setInt(2, user.getId());
+       updatePointsStatement.executeUpdate();
+       } catch (SQLException e) {
+        System.err.println("Failed to update points");
+        }
+        
+        }
 }
     

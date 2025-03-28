@@ -20,5 +20,11 @@ public class Score {
         this.scoreValue = scoreValue;
         this.date = date;
     }
+
+    public void addScore(int scoreIncrease, Date date2) {
+        this.scoreValue += scoreIncrease;
+        this.date = date2;
+       
+    }
     
 }

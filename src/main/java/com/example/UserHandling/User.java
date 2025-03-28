@@ -13,15 +13,18 @@ public class User {
 
 
     public User(){
-
+        
     }
-
     
     public User(int id, String username, int points, Score highScore){
         this.id = id;
         this.username = username;
         this.points = points;
         this.highScore = highScore;
+    }
+
+    public void addPoints(int pointsIncrease) {
+        this.points += pointsIncrease;
     }
 
 }

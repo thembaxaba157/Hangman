@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.example.DisplayManager;
 import com.example.InputHandler;
 import com.example.DatabaseHandling.DatabaseManager;
+import lombok.*;
+
 
 public class UserSession {
     private User user = null;
@@ -14,6 +16,14 @@ public class UserSession {
     public UserSession(InputHandler inputHandler) {
         this.inputHandler = inputHandler;
         this.databaseManager = new DatabaseManager();
+    }
+
+    public User getUser(){
+        return this.user;
+    }
+
+    public void setUser(User user){
+        this.user = user;
     }
 
     public UserSession(InputHandler inputHandler, User user) {
@@ -115,6 +125,18 @@ public class UserSession {
             return true;
         }
         return false;
+    }
+
+    public void updateScore() {
+        this.databaseManager.addScoreEntry(this.user);
+    }
+
+    public void resetScore() {
+        this.user.setCurrScore(new Score());
+    }
+
+    public void updatePoints() {
+        this.databaseManager.updatePoints(this.user);
     }
 
 }

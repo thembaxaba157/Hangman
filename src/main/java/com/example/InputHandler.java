@@ -1,5 +1,6 @@
 package com.example;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class InputHandler {
@@ -68,4 +69,32 @@ public class InputHandler {
 
     }
 
+    public String getLetterOrHint() {
+        String letterOrHint = "";
+        System.out.print("\n>");
+        letterOrHint = this.scanner.next();
+        return letterOrHint;
+    
+
+}
+
+    public String getStringInt() {
+        String stringInt = "";
+        System.out.println("Please Enter a number");
+        stringInt = this.scanner.next();
+
+        return stringInt;
+        
+    }
+
+
+
+    public void waitForAnyKey() {
+    System.out.println("\nPress any key to continue...");
+    try {
+        System.in.read(); // Reads a single character
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 }

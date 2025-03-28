@@ -3,7 +3,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Set;
 
-import org.json.simple.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.example.WordDataHandling.Category.Difficulty;
@@ -18,7 +19,7 @@ public class JsonWordLoader {
         private ArrayList<Category> categories;
     
         public JsonWordLoader() {
-            this.filePath = "words.json";
+            this.filePath = "words2.json";
             loadCategories();
         }
     
@@ -39,13 +40,21 @@ public class JsonWordLoader {
                 Set<String> categoriesSet =  jsonFileObject.keySet();
 
                 for(String category : categoriesSet) {
-                    Category newCategory = new Category(category, "will fix later");
+                    Category newCategory = new Category(category);
                     JSONObject difficulties = (JSONObject) jsonFileObject.get(category);
                     Set<String> difficultiesSet = difficulties.keySet();
                     for(String difficulty : difficultiesSet){
+                        if(difficulty.equals("description")){
+                            
+                            try {
+                                newCategory.setDescription((String) difficulties.get(difficulty));
+                            } catch (Exception e) {
+                                System.err.println("Failed to get description from the file");
+                            }
+                        }
                         try {
                         
-                            Difficulty difficultyConverted = Difficulty.valueOf(difficulty);
+                            Difficulty difficultyConverted = Difficulty.valueOf(difficulty.toUpperCase());
                             JSONArray jsonArrayWords = (JSONArray) difficulties.get(difficulty);
                             ArrayList<Word> words = new ArrayList<>();
 

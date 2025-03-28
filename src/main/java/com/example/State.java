@@ -8,7 +8,7 @@ public enum GameState {
 
     MENU,
     PICK_USER,
-    PICK_WORD,
+    PLAY_MENU,
     GAMESESSION,
     STATS,
     EXIT
