@@ -19,7 +19,7 @@ public class JsonWordLoader {
         private ArrayList<Category> categories;
     
         public JsonWordLoader() {
-            this.filePath = "words2.json";
+            this.filePath = "words.json";
             loadCategories();
         }
     
