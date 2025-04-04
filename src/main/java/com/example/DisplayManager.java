@@ -120,4 +120,11 @@ public class DisplayManager {
             }
     }
 
+    public static void showTopFiveLeaderboard(ArrayList<String> topFiveLeaderboard) {
+        System.out.println("\nTop 5 Leaderboard: \n");
+        for (int i = 0; i < topFiveLeaderboard.size(); i++) {
+            System.out.println((i+1) + " " + topFiveLeaderboard.get(i));
+            }
+    }
+
 }

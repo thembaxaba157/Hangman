@@ -263,7 +263,7 @@ public void deletePlayer(String string) {
 public void addScoreEntry(User user) {
     try {
         String addScoreSql = """
-        INSERT INTO scores (player_id, highscore, date_played)
+        INSERT INTO scores (player_id, score, date_played)
         VALUES (?, ?, ?)
         """;
         PreparedStatement addScoreStatement = this.connection.prepareStatement(addScoreSql);
@@ -293,5 +293,27 @@ public void updatePoints(User user) {
         }
         
         }
+
+public ArrayList<String> getTopFiveLeaderboard() {
+    ArrayList<String> topFive = new ArrayList<>();
+    try {
+        String getTopFiveSql = """
+        SELECT username, points
+        FROM points
+        ORDER BY points DESC
+        LIMIT 5
+        """;
+        PreparedStatement getTopFiveStatement = this.connection.prepareStatement(getTopFiveSql);
+        ResultSet getTopFiveResultSet = getTopFiveStatement.executeQuery();
+        while (getTopFiveResultSet.next()) {
+            topFive.add(getTopFiveResultSet.getString("username") + " - " + getTopFiveResultSet.getString("points"));
+            }
+            } catch (SQLException e) {
+                System.err.println("Failed to get top five leaderboard");
+    
+           }
+
+           return topFive;
+}
 }
     
