@@ -1,72 +1,467 @@
 {
     "movies": {
-      "easy": [
-        { "word": "jaws", "hint": "Shark thriller directed by Spielberg" },
-        { "word": "rocky", "hint": "Boxing movie featuring Sylvester Stallone" },
-        { "word": "shrek", "hint": "Animated ogre with a talking donkey" },
-        { "word": "frozen", "hint": "Disney movie featuring Elsa and Anna" },
-        { "word": "avatar", "hint": "James Cameron's blue-skinned aliens" }
-      ],
-      "medium": [
-        { "word": "inception", "hint": "A movie about dreams within dreams" },
-        { "word": "gladiator", "hint": "Russell Crowe fights in the Colosseum" },
-        { "word": "interstellar", "hint": "A space exploration film directed by Nolan" },
-        { "word": "black swan", "hint": "Psychological thriller about ballet" },
-        { "word": "goodfellas", "hint": "Classic mobster movie" }
-      ],
-      "hard": [
-        { "word": "amadeus", "hint": "Biographical film about Mozart" },
-        { "word": "memento", "hint": "A movie told in reverse order" },
-        { "word": "whiplash", "hint": "Movie about a drummer and his harsh instructor" },
-        { "word": "mulholland drive", "hint": "Surreal mystery directed by David Lynch" },
-        { "word": "requiem for a dream", "hint": "Intense drama about addiction" }
-      ]
+        "description": "Famous movies from different genres and eras.",
+        "easy": [
+            {
+                "word": "jaws",
+                "hint": "Shark thriller directed by Spielberg"
+            },
+            {
+                "word": "rocky",
+                "hint": "Boxing movie featuring Sylvester Stallone"
+            },
+            {
+                "word": "shrek",
+                "hint": "Animated ogre with a talking donkey"
+            },
+            {
+                "word": "frozen",
+                "hint": "Disney movie featuring Elsa and Anna"
+            },
+            {
+                "word": "avatar",
+                "hint": "James Cameron's blue-skinned aliens"
+            },
+            {
+                "word": "titanic",
+                "hint": "Famous ship disaster love story"
+            },
+            {
+                "word": "up",
+                "hint": "Animated movie with a flying house"
+            }
+        ],
+        "medium": [
+            {
+                "word": "inception",
+                "hint": "A movie about dreams within dreams"
+            },
+            {
+                "word": "gladiator",
+                "hint": "Russell Crowe fights in the Colosseum"
+            },
+            {
+                "word": "interstellar",
+                "hint": "A space exploration film directed by Nolan"
+            },
+            {
+                "word": "black swan",
+                "hint": "Psychological thriller about ballet"
+            },
+            {
+                "word": "goodfellas",
+                "hint": "Classic mobster movie"
+            },
+            {
+                "word": "joker",
+                "hint": "DC movie about a villain's origin story"
+            },
+            {
+                "word": "the prestige",
+                "hint": "A movie about rival magicians"
+            }
+        ],
+        "hard": [
+            {
+                "word": "amadeus",
+                "hint": "Biographical film about Mozart"
+            },
+            {
+                "word": "memento",
+                "hint": "A movie told in reverse order"
+            },
+            {
+                "word": "whiplash",
+                "hint": "Movie about a drummer and his harsh instructor"
+            },
+            {
+                "word": "mulholland drive",
+                "hint": "Surreal mystery directed by David Lynch"
+            },
+            {
+                "word": "requiem for a dream",
+                "hint": "Intense drama about addiction"
+            },
+            {
+                "word": "there will be blood",
+                "hint": "A film about oil and greed"
+            },
+            {
+                "word": "synecdoche new york",
+                "hint": "A complex drama about life and theater"
+            }
+        ]
     },
     "football_clubs": {
-      "easy": [
-        { "word": "barcelona", "hint": "Spanish club known for tiki-taka" },
-        { "word": "chelsea", "hint": "London-based club, known as The Blues" },
-        { "word": "liverpool", "hint": "English club with Anfield as their stadium" },
-        { "word": "real madrid", "hint": "Spanish club with the most UCL titles" },
-        { "word": "manchester united", "hint": "Red Devils from England" }
-      ],
-      "medium": [
-        { "word": "dortmund", "hint": "German club with a yellow and black kit" },
-        { "word": "galatasaray", "hint": "Turkish club known for its passionate fans" },
-        { "word": "benfica", "hint": "Portuguese club with an eagle as its symbol" },
-        { "word": "sevilla", "hint": "Spanish club known for Europa League success" },
-        { "word": "ajax", "hint": "Dutch club famous for youth development" }
-      ],
-      "hard": [
-        { "word": "feyenoord", "hint": "Dutch club from Rotterdam" },
-        { "word": "cruzeiro", "hint": "Brazilian club with blue stars" },
-        { "word": "partizan", "hint": "Serbian club with black and white stripes" },
-        { "word": "boca juniors", "hint": "Argentinian club with fierce rivalry against River Plate" },
-        { "word": "sporting cp", "hint": "Portuguese club known for producing Cristiano Ronaldo" }
-      ]
+        "description": "Popular football clubs from around the world.",
+        "easy": [
+            {
+                "word": "barcelona",
+                "hint": "Spanish club known for tiki-taka"
+            },
+            {
+                "word": "chelsea",
+                "hint": "London-based club, known as The Blues"
+            },
+            {
+                "word": "liverpool",
+                "hint": "English club with Anfield as their stadium"
+            },
+            {
+                "word": "real madrid",
+                "hint": "Spanish club with the most UCL titles"
+            },
+            {
+                "word": "manchester united",
+                "hint": "Red Devils from England"
+            },
+            {
+                "word": "bayern",
+                "hint": "Top German club"
+            },
+            {
+                "word": "juventus",
+                "hint": "Italian club known as The Old Lady"
+            }
+        ],
+        "medium": [
+            {
+                "word": "dortmund",
+                "hint": "German club with a yellow and black kit"
+            },
+            {
+                "word": "galatasaray",
+                "hint": "Turkish club known for its passionate fans"
+            },
+            {
+                "word": "benfica",
+                "hint": "Portuguese club with an eagle as its symbol"
+            },
+            {
+                "word": "sevilla",
+                "hint": "Spanish club known for Europa League success"
+            },
+            {
+                "word": "ajax",
+                "hint": "Dutch club famous for youth development"
+            },
+            {
+                "word": "porto",
+                "hint": "Portuguese club with blue and white stripes"
+            },
+            {
+                "word": "ac milan",
+                "hint": "Italian club with multiple UCL titles"
+            }
+        ],
+        "hard": [
+            {
+                "word": "feyenoord",
+                "hint": "Dutch club from Rotterdam"
+            },
+            {
+                "word": "cruzeiro",
+                "hint": "Brazilian club with blue stars"
+            },
+            {
+                "word": "partizan",
+                "hint": "Serbian club with black and white stripes"
+            },
+            {
+                "word": "boca juniors",
+                "hint": "Argentinian club with fierce rivalry against River Plate"
+            },
+            {
+                "word": "sporting cp",
+                "hint": "Portuguese club known for producing Cristiano Ronaldo"
+            },
+            {
+                "word": "flamengo",
+                "hint": "Brazilian club with a huge fanbase"
+            },
+            {
+                "word": "celtic",
+                "hint": "Scottish club with a green and white kit"
+            }
+        ]
     },
     "cities": {
-      "easy": [
-        { "word": "paris", "hint": "City of love" },
-        { "word": "london", "hint": "Capital of the UK" },
-        { "word": "tokyo", "hint": "Largest city in Japan" },
-        { "word": "new york", "hint": "The Big Apple" },
-        { "word": "rome", "hint": "Capital of Italy" }
-      ],
-      "medium": [
-        { "word": "mumbai", "hint": "Financial capital of India" },
-        { "word": "toronto", "hint": "Canada's largest city" },
-        { "word": "madrid", "hint": "Capital of Spain" },
-        { "word": "melbourne", "hint": "Australian city known for coffee" },
-        { "word": "cape town", "hint": "South African city with Table Mountain" }
-      ],
-      "hard": [
-        { "word": "reykjavik", "hint": "Capital of Iceland" },
-        { "word": "bucharest", "hint": "Capital of Romania" },
-        { "word": "addis ababa", "hint": "Capital of Ethiopia" },
-        { "word": "ulaanbaatar", "hint": "Capital of Mongolia" },
-        { "word": "tbilisi", "hint": "Capital of Georgia (country)" }
-      ]
+        "description": "Famous cities around the world, known for culture and history.",
+        "easy": [
+            {
+                "word": "paris",
+                "hint": "City of love"
+            },
+            {
+                "word": "london",
+                "hint": "Capital of the UK"
+            },
+            {
+                "word": "tokyo",
+                "hint": "Largest city in Japan"
+            },
+            {
+                "word": "new york",
+                "hint": "The Big Apple"
+            },
+            {
+                "word": "rome",
+                "hint": "Capital of Italy"
+            },
+            {
+                "word": "beijing",
+                "hint": "Capital of China"
+            },
+            {
+                "word": "moscow",
+                "hint": "Capital of Russia"
+            }
+        ],
+        "medium": [
+            {
+                "word": "dubai",
+                "hint": "City known for Burj Khalifa"
+            },
+            {
+                "word": "sydney",
+                "hint": "Home of the Opera House"
+            },
+            {
+                "word": "berlin",
+                "hint": "Capital of Germany"
+            },
+            {
+                "word": "madrid",
+                "hint": "Capital of Spain"
+            },
+            {
+                "word": "istanbul",
+                "hint": "City bridging Europe and Asia"
+            },
+            {
+                "word": "bangkok",
+                "hint": "Capital of Thailand"
+            },
+            {
+                "word": "singapore",
+                "hint": "Southeast Asian island city-state"
+            }
+        ],
+        "hard": [
+            {
+                "word": "copenhagen",
+                "hint": "Capital of Denmark"
+            },
+            {
+                "word": "reykjavik",
+                "hint": "Capital of Iceland"
+            },
+            {
+                "word": "buenos aires",
+                "hint": "Capital of Argentina"
+            },
+            {
+                "word": "cape town",
+                "hint": "One of South Africa’s capitals"
+            },
+            {
+                "word": "hanoi",
+                "hint": "Capital of Vietnam"
+            },
+            {
+                "word": "auckland",
+                "hint": "Largest city in New Zealand"
+            },
+            {
+                "word": "bratislava",
+                "hint": "Capital of Slovakia"
+            }
+        ]
+    },
+    "animals": {
+        "description": "Different types of animals from various habitats.",
+        "easy": [
+            {
+                "word": "lion",
+                "hint": "The king of the jungle"
+            },
+            {
+                "word": "elephant",
+                "hint": "Largest land animal"
+            },
+            {
+                "word": "tiger",
+                "hint": "Big cat with stripes"
+            },
+            {
+                "word": "panda",
+                "hint": "Black and white bear"
+            },
+            {
+                "word": "giraffe",
+                "hint": "Tallest animal"
+            },
+            {
+                "word": "zebra",
+                "hint": "Striped horse-like animal"
+            },
+            {
+                "word": "kangaroo",
+                "hint": "Australian animal that hops"
+            }
+        ],
+        "medium": [
+            {
+                "word": "jaguar",
+                "hint": "Big cat found in South America"
+            },
+            {
+                "word": "platypus",
+                "hint": "A mammal that lays eggs"
+            },
+            {
+                "word": "narwhal",
+                "hint": "The unicorn of the sea"
+            },
+            {
+                "word": "armadillo",
+                "hint": "Small animal with armor-like shell"
+            },
+            {
+                "word": "komodo",
+                "hint": "Largest living lizard"
+            },
+            {
+                "word": "koala",
+                "hint": "Tree-dwelling marsupial"
+            },
+            {
+                "word": "ocelot",
+                "hint": "Wild cat found in rainforests"
+            }
+        ],
+        "hard": [
+            {
+                "word": "axolotl",
+                "hint": "Aquatic salamander that can regenerate limbs"
+            },
+            {
+                "word": "cassowary",
+                "hint": "Large flightless bird from Australia"
+            },
+            {
+                "word": "quokka",
+                "hint": "Small marsupial known for its smile"
+            },
+            {
+                "word": "echidna",
+                "hint": "Spiny mammal that lays eggs"
+            },
+            {
+                "word": "pangolin",
+                "hint": "Scaly mammal that eats ants"
+            },
+            {
+                "word": "saola",
+                "hint": "Rare mammal known as the Asian unicorn"
+            },
+            {
+                "word": "kakapo",
+                "hint": "Flightless parrot from New Zealand"
+            }
+        ]
+    },
+    "video_games": {
+        "description": "Popular video games across different genres.",
+        "easy": [
+            {
+                "word": "minecraft",
+                "hint": "Block-building sandbox game"
+            },
+            {
+                "word": "mario",
+                "hint": "Nintendo's famous plumber"
+            },
+            {
+                "word": "pacman",
+                "hint": "Yellow character that eats pellets"
+            },
+            {
+                "word": "tetris",
+                "hint": "Famous puzzle game with falling blocks"
+            },
+            {
+                "word": "zelda",
+                "hint": "Legendary Nintendo adventure series"
+            },
+            {
+                "word": "sonic",
+                "hint": "Fast blue hedgehog"
+            },
+            {
+                "word": "doom",
+                "hint": "Classic first-person shooter"
+            }
+        ],
+        "medium": [
+            {
+                "word": "fortnite",
+                "hint": "Battle royale game with building mechanics"
+            },
+            {
+                "word": "halo",
+                "hint": "Sci-fi shooter with Master Chief"
+            },
+            {
+                "word": "resident evil",
+                "hint": "Survival horror franchise with zombies"
+            },
+            {
+                "word": "dark souls",
+                "hint": "Infamously difficult RPG"
+            },
+            {
+                "word": "overwatch",
+                "hint": "Team-based hero shooter"
+            },
+            {
+                "word": "final fantasy",
+                "hint": "Long-running JRPG series"
+            },
+            {
+                "word": "portal",
+                "hint": "Puzzle game involving teleportation"
+            }
+        ],
+        "hard": [
+            {
+                "word": "chrono trigger",
+                "hint": "Classic RPG about time travel"
+            },
+            {
+                "word": "undertale",
+                "hint": "Indie RPG with unique combat mechanics"
+            },
+            {
+                "word": "hollow knight",
+                "hint": "Indie metroidvania about an insect warrior"
+            },
+            {
+                "word": "persona",
+                "hint": "JRPG series about high school students and demons"
+            },
+            {
+                "word": "shadow of the colossus",
+                "hint": "A game about hunting giant creatures"
+            },
+            {
+                "word": "bloodborne",
+                "hint": "Dark gothic horror action RPG"
+            },
+            {
+                "word": "bioshock",
+                "hint": "First-person shooter set in an underwater city"
+            }
+        ]
     }
-  }
-  
+}

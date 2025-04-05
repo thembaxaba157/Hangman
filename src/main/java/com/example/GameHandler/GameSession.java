@@ -82,13 +82,13 @@ public class GameSession {
 
     private boolean checkGameResult() {
         if (isWordGuessed()) {
-            System.out.println("🎉 Congratulations! You guessed the word: " + selectedWord.getWord().getName());
+            System.out.println("Congratulations! You guessed the word: " + selectedWord.getWord().getName());
             System.out.println("Your final score: " + user.getCurrScore().getScoreValue());
 
             // Update high score if needed
             if (user.getHighScore() == null || user.getCurrScore().getScoreValue() > user.getHighScore().getScoreValue()) {
                 user.setHighScore(user.getCurrScore());
-                System.out.println("New High Score! 🎯");
+                System.out.println("New High Score!");
             }
             return true;
         } else {

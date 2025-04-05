@@ -54,8 +54,10 @@ public class Hangman {
 
     private void statSession() {
 
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'statSession'");
+       userSession.viewTopFiveleaderboard();
+       inputHandler.waitForAnyKey();
+       currGameState = GameState.MENU;
+
     }
 
     private void gameSession() {
