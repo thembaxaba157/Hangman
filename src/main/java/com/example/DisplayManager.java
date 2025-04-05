@@ -105,12 +105,12 @@ public class DisplayManager {
     }
 
     public static void showRules(){
-        System.out.println("\n📜 HANGMAN RULES 📜");
-        System.out.println("1️⃣ The game randomly selects a word.");
-        System.out.println("2️⃣ You must guess one letter at a time.");
-        System.out.println("3️⃣ If the letter is correct, it is revealed.");
-        System.out.println("4️⃣ If incorrect, you lose an attempt.");
-        System.out.println("6️⃣ The game ends when you guess the word or run out of attempts.");
+        System.out.println("\n HANGMAN RULES:\n");
+        System.out.println("1. The game randomly selects a word.");
+        System.out.println("2. You must guess one letter at a time.");
+        System.out.println("3. If the letter is correct, it is revealed.");
+        System.out.println("4. If incorrect, you lose an attempt.");
+        System.out.println("5. The game ends when you guess the word or run out of attempts.");
     }
 
     public static void display(ArrayList<String> categoryNames) {
@@ -123,7 +123,7 @@ public class DisplayManager {
     public static void showTopFiveLeaderboard(ArrayList<String> topFiveLeaderboard) {
         System.out.println("\nTop 5 Leaderboard: \n");
         for (int i = 0; i < topFiveLeaderboard.size(); i++) {
-            System.out.println((i+1) + " " + topFiveLeaderboard.get(i));
+            System.out.println((i+1) + "." + topFiveLeaderboard.get(i));
             }
     }
 

@@ -294,26 +294,30 @@ public void updatePoints(User user) {
         
         }
 
-public ArrayList<String> getTopFiveLeaderboard() {
-    ArrayList<String> topFive = new ArrayList<>();
-    try {
-        String getTopFiveSql = """
-        SELECT username, points
-        FROM points
-        ORDER BY points DESC
-        LIMIT 5
-        """;
-        PreparedStatement getTopFiveStatement = this.connection.prepareStatement(getTopFiveSql);
-        ResultSet getTopFiveResultSet = getTopFiveStatement.executeQuery();
-        while (getTopFiveResultSet.next()) {
-            topFive.add(getTopFiveResultSet.getString("username") + " - " + getTopFiveResultSet.getString("points"));
-            }
+        public ArrayList<String> getTopFiveLeaderboard() {
+            ArrayList<String> topFive = new ArrayList<>();
+            String getTopFiveSql = """
+                SELECT p.username, s.score
+                FROM scores s
+                JOIN players p ON s.player_id = p.id
+                ORDER BY s.score DESC
+                LIMIT 5
+                """;
+        
+            try (PreparedStatement getTopFiveStatement = this.connection.prepareStatement(getTopFiveSql);
+                 ResultSet getTopFiveResultSet = getTopFiveStatement.executeQuery()) {
+        
+                while (getTopFiveResultSet.next()) {
+                    String username = getTopFiveResultSet.getString("username");
+                    int score = getTopFiveResultSet.getInt("score"); 
+                    topFive.add(username + " - " + score + " score");
+                }
             } catch (SQLException e) {
                 System.err.println("Failed to get top five leaderboard");
-    
-           }
-
-           return topFive;
-}
+                e.printStackTrace();
+            }
+        
+            return topFive;
+        }
 }
     

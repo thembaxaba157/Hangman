@@ -55,6 +55,9 @@ public class Hangman {
     private void statSession() {
 
        userSession.viewTopFiveleaderboard();
+       inputHandler.waitForAnyKey();
+       currGameState = GameState.MENU;
+
     }
 
     private void gameSession() {
