@@ -12,13 +12,11 @@ public class Hangman {
     private InputHandler inputHandler;
     private UserSession userSession;
 
-
     public Hangman() {
         this.inputHandler = new InputHandler();
         this.wordManager = new WordManager(this.inputHandler);
         this.userSession = new UserSession(this.inputHandler);
         this.currGameState = GameState.MENU;
-            
 
     }
 
@@ -54,30 +52,35 @@ public class Hangman {
 
     private void statSession() {
 
-       userSession.viewTopFiveleaderboard();
-       inputHandler.waitForAnyKey();
-       currGameState = GameState.MENU;
+        userSession.viewTopFiveleaderboard();
+        inputHandler.waitForAnyKey();
+        currGameState = GameState.MENU;
 
     }
 
     private void gameSession() {
 
-        GameSession gameSession = new GameSession(inputHandler, wordManager.getGameSessionWord(), userSession.getUser());
+        GameSession gameSession = new GameSession(inputHandler, wordManager.getGameSessionWord(),
+                userSession.getUser());
         boolean success = gameSession.play();
         User gameSessionUser = gameSession.getUser();
+        handlePostGame(gameSessionUser, success);
+
+    }
+
+    private void handlePostGame(User gameSessionUser, boolean success) {
+
         userSession.setUser(gameSessionUser);
-        
+
         if (success) {
             DisplayManager.continuePlay();
             int n = inputHandler.enterInt(2, false, false);
 
-
             if (n == 2) {
-            userSession.updateScore();
-            userSession.resetScore();
-            this.currGameState = GameState.PLAY_MENU;
-            }
-            else if (n == 1){
+                userSession.updateScore();
+                userSession.resetScore();
+                this.currGameState = GameState.PLAY_MENU;
+            } else if (n == 1) {
                 wordManager.pickWordAgain();
             }
 
@@ -88,40 +91,39 @@ public class Hangman {
         }
 
         userSession.updatePoints();
-        
-        
+
     }
 
     private void PlayMenuSession() {
-      DisplayManager.showPlayMenu();
-      int choice = inputHandler.enterInt(3, true, false);
-      boolean sucess = false;
-      switch (choice) {
-        case 0:
-        this.currGameState = GameState.MENU;
-        break;
-        
-        case 1:
-            if(userSession.getUser()==null){
-                System.out.println("You must select a user to play.");
+        DisplayManager.showPlayMenu();
+        int choice = inputHandler.enterInt(3, true, false);
+        boolean sucess = false;
+        switch (choice) {
+            case 0:
+                this.currGameState = GameState.MENU;
                 break;
-            }
-            sucess = wordManager.pickWordSession();
-            if(sucess){
-                currGameState = GameState.GAMESESSION;
-            }
-           
-            break;
-        
-        case 2:
-            wordManager.displayAvailableCategories();
-            inputHandler.waitForAnyKey();
-            break;
-            
-        case 3:
-            DisplayManager.showRules();
-        
-      }
+
+            case 1:
+                if (userSession.getUser() == null) {
+                    System.out.println("You must select a user to play.");
+                    break;
+                }
+                sucess = wordManager.pickWordSession();
+                if (sucess) {
+                    currGameState = GameState.GAMESESSION;
+                }
+
+                break;
+
+            case 2:
+                wordManager.displayAvailableCategories();
+                inputHandler.waitForAnyKey();
+                break;
+
+            case 3:
+                DisplayManager.showRules();
+
+        }
 
     }
 
@@ -133,39 +135,39 @@ public class Hangman {
             case 0:
                 this.currGameState = GameState.MENU;
                 break;
-            
+
             // createUser
             case 1:
-               success = this.userSession.createUserSession();
-               if(success){
-                this.currGameState = GameState.MENU;
-               }
-               break;
-            
+                success = this.userSession.createUserSession();
+                if (success) {
+                    this.currGameState = GameState.MENU;
+                }
+                break;
+
             case 2:
-               success = this.userSession.loadUserSession();
-               if(success){
-                this.currGameState = GameState.MENU;
+                success = this.userSession.loadUserSession();
+                if (success) {
+                    this.currGameState = GameState.MENU;
                 }
                 break;
-            
+
             case 3:
-            success = this.userSession.deleteUserSession();
-            if(success){
-                this.currGameState = GameState.MENU;
+                success = this.userSession.deleteUserSession();
+                if (success) {
+                    this.currGameState = GameState.MENU;
                 }
                 break;
-            
+
             case 4:
                 success = this.userSession.viewCurrUser();
-                if(success){
+                if (success) {
                     this.currGameState = GameState.MENU;
-                    }
-                    break;
+                }
+                break;
+
+        }
 
     }
-            
-}
 
     private void menuSession() {
         DisplayManager.showMenu();
@@ -184,7 +186,7 @@ public class Hangman {
                 this.currGameState = GameState.EXIT;
                 break;
 
+        }
     }
-}
 
 }
