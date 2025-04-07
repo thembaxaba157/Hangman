@@ -65,9 +65,9 @@ public class Hangman {
         boolean success = gameSession.play();
         User gameSessionUser = gameSession.getUser();
         handlePostGame(gameSessionUser, success);
-
     }
 
+    
     private void handlePostGame(User gameSessionUser, boolean success) {
 
         userSession.setUser(gameSessionUser);
