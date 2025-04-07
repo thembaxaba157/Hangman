@@ -87,12 +87,10 @@ public class InputHandler {
         
     }
 
-
-
-    public void waitForAnyKey() {
+public void waitForAnyKey() {
     System.out.println("\nPress any key to continue...");
     try {
-        System.in.read(); // Reads a single character
+        System.in.read();
     } catch (IOException e) {
         e.printStackTrace();
     }

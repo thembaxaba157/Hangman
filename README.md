@@ -93,5 +93,3 @@ The Hangman game is a word-guessing game where players try to complete a hidden 
 
 ---
 
-This document serves as a **reference for coding**. You can update it as features evolve. 🚀
-

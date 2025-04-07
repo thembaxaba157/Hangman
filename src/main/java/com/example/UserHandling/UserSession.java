@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.example.DisplayManager;
 import com.example.InputHandler;
 import com.example.DatabaseHandling.DatabaseManager;
-import lombok.*;
 
 
 public class UserSession {
@@ -137,6 +136,10 @@ public class UserSession {
 
     public void updatePoints() {
         this.databaseManager.updatePoints(this.user);
+    }
+
+    public void viewTopFiveleaderboard() {
+        DisplayManager.showTopFiveLeaderboard(this.databaseManager.getTopFiveLeaderboard());
     }
 
 }
