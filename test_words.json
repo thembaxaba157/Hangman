@@ -1,0 +1,22 @@
+{
+  "Movies": {
+    "description": "Famous movies around the world",
+    "easy": [
+      {"word": "Avatar", "hint": "James Cameron sci-fi film"},
+      {"word": "Titanic", "hint": "Ship disaster love story"}
+    ],
+    "medium": [
+      {"word": "Inception", "hint": "Dream within a dream"}
+    ],
+    "hard": [
+      {"word": "Memento", "hint": "Man with short-term memory loss"}
+    ]
+  },
+  "FootballClubs": {
+    "description": "Popular football clubs",
+    "easy": [
+      {"word": "Chelsea", "hint": "Blue London club"},
+      {"word": "RealMadrid", "hint": "Spanish club with many UCLs"}
+    ]
+  }
+}
