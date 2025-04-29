@@ -119,4 +119,88 @@ class JsonWordLoaderTest {
         assertNotNull(loader.getCategories());
         assertEquals(0, loader.getCategories().size(), "No categories should be loaded for invalid file");
     }
+
+    @Test
+void testCorruptedJson() throws IOException {
+    // Create corrupted JSON
+    String corruptedJson = """
+        {
+          "Movies": {
+            "easy": [
+              {"word": "Avatar", "hint": "James Cameron sci-fi film"}
+            ],
+          }
+        """;
+
+    try (FileWriter fileWriter = new FileWriter(TEST_JSON_FILE)) {
+        fileWriter.write(corruptedJson);
+    }
+
+    JsonWordLoader loader = new JsonWordLoader(TEST_JSON_FILE);
+
+    // Should not crash, but no categories should be loaded
+    assertNotNull(loader.getCategories());
+    assertEquals(0, loader.getCategories().size(), "Corrupted JSON should result in empty category list");
+}
+
+@Test
+void testMissingDescriptionField() throws IOException {
+    // JSON missing 'description' for a category
+    String missingDescriptionJson = """
+        {
+          "Games": {
+            "easy": [
+              {"word": "Chess", "hint": "Board game of kings"}
+            ]
+          }
+        }
+        """;
+
+    try (FileWriter fileWriter = new FileWriter(TEST_JSON_FILE)) {
+        fileWriter.write(missingDescriptionJson);
+    }
+
+    JsonWordLoader loader = new JsonWordLoader(TEST_JSON_FILE);
+
+    assertNotNull(loader.getCategories());
+    assertEquals(1, loader.getCategories().size());
+
+    Category gamesCategory = loader.getCategories().get(0);
+    assertEquals("Games", gamesCategory.getName());
+    assertEquals("", gamesCategory.getDescription(), "Description should be empty string if missing");
+
+    ArrayList<Word> easyWords = gamesCategory.getWordsByDifficulty().get(Category.Difficulty.EASY);
+    assertEquals(1, easyWords.size());
+    assertEquals("Chess", easyWords.get(0).getName());
+}
+
+@Test
+void testCategoryWithNoWords() throws IOException {
+    // Category exists but has no difficulties or words
+    String noWordsJson = """
+        {
+          "EmptyCategory": {
+            "description": "This category has no words"
+          }
+        }
+        """;
+
+    try (FileWriter fileWriter = new FileWriter(TEST_JSON_FILE)) {
+        fileWriter.write(noWordsJson);
+    }
+
+    JsonWordLoader loader = new JsonWordLoader(TEST_JSON_FILE);
+
+    assertNotNull(loader.getCategories());
+    assertEquals(1, loader.getCategories().size());
+
+    Category emptyCategory = loader.getCategories().get(0);
+    assertEquals("EmptyCategory", emptyCategory.getName());
+    assertEquals("This category has no words", emptyCategory.getDescription());
+
+    assertTrue(emptyCategory.getDifficulties().isEmpty(), "Category should have no difficulties");
+}
+
+
+
 }
