@@ -1,95 +1,179 @@
-things used/will be used so far
-- sqlite
-- junit and mockito for testing
-- sementic versioning and workflows
-- json for words
+# 🎮 Hangman CLI Game
 
+[![Java](https://img.shields.io/badge/Java-17+-brightgreen.svg)](https://www.oracle.com/java/)  
+[![SQLite](https://img.shields.io/badge/SQLite-Database-blue.svg)](https://www.sqlite.org/)  
+[![Tests](https://img.shields.io/badge/JUnit%20%2B%20Mockito-Test-yellow.svg)](https://junit.org/)  
+[![Versioning](https://img.shields.io/badge/Semantic-Versioning-blueviolet.svg)](https://semver.org/)  
+[![CI/CD](https://img.shields.io/badge/GitHub%20Actions-Automation-lightgrey)](https://github.com/yourname/hangman/actions)
 
+A feature-rich command-line Hangman game written in **Java**. It uses **SQLite** for persistent storage, **JSON** for word categories, and follows **Semantic Versioning** with **GitHub Actions** for automated testing and releases.
 
-
-# Hangman Game - Rules & Mechanics
+---
 
 ## 📌 Overview
-The Hangman game is a word-guessing game where players try to complete a hidden word by guessing letters. Players can earn **points** for correct guesses and **scores** for winning rounds. Points can be used to **buy hints**, while scores determine leaderboard rankings.
+
+This CLI game challenges users to guess words across various categories and difficulties. It includes:
+- Scoring and point mechanics
+- Persistent user accounts
+- Hints using point currency
+- Top 5 leaderboard system
+- Word categories from JSON
 
 ---
 
-## 🎯 Objectives
-- Correctly guess all the letters of a word before running out of attempts.
-- Earn **points** for each correct guess.
-- Earn **scores** by completing words.
-- Spend **points** to buy hints if stuck.
-- Maintain a **streak** for bonus rewards.
+## 🚀 Features
+
+- 🎯 Word selection by category and difficulty
+- 💰 Points system for hints
+- 🏆 Scores awarded only for wins
+- 📊 Persistent data in SQLite
+- 🔁 User management (create/load/delete/view)
+- 🧠 Hint types: reveal letter, extra attempt, reveal fact
+- 🧪 Unit tested using JUnit & Mockito
+- 📦 JSON-based word list (with descriptions and hints)
 
 ---
 
-## 🏆 Score & 💰 Points System (Independent)
-| **Action**                         | **Effect on Points**            | **Effect on Score**             |
-|-------------------------------------|--------------------------------|---------------------------------|
-| Guess a correct letter             | +1 (Easy), +2 (Medium), +3 (Hard) | No effect                      |
-| Guess a wrong letter               | No effect                      | No effect                      |
-| Complete the word (Win)            | No effect                      | +Total Points Earned for the Round |
-| Lose the round                     | No effect                      | No effect                      |
-| Win multiple games in a row        | No effect                      | +Win Streak Bonus              |
+## 🗂️ Tech Stack
 
-📌 **Points** = Earned per letter guessed correctly (used to buy hints).  
-📌 **Scores** = Only awarded when the player **wins a round** (used for leaderboard ranking).
-
----
-
-## 🎮 Game Flow
-1️⃣ **Main Menu**: Play Game | Pick User | View Stats | Exit.  
-2️⃣ **Pick User** (Load | Delete | Create).  
-3️⃣ **Play** → Pick **Category** → Pick **Difficulty** → Start Game.  
-4️⃣ **Guess Letters**: Earn points per correct guess.  
-5️⃣ **Win or Lose**: Win to earn a score. Losing gives no points.  
-6️⃣ **Continue?**: Stay in the same difficulty to keep your current score.  
-7️⃣ **Use Points for Hints** (Optional).  
+| Purpose        | Technology           |
+|----------------|----------------------|
+| Language       | Java 17+             |
+| Database       | SQLite (via JDBC)    |
+| Word Storage   | JSON (words.json)    |
+| Input Handling | Scanner (CLI)        |
+| Testing        | JUnit + Mockito      |
+| CI/CD          | GitHub Actions       |
+| Versioning     | Semantic Versioning  |
 
 ---
 
-## 🛒 Hint System (Uses Points)
-| **Hint Type**                   | **Cost (Points)** |
-|---------------------------------|------------------|
-| **Reveal a random letter**      | 5 Points        |
-| **Shows the fact about the word** | 3 Points        |
-| **Remove a wrong letter choice**  | 4 Points        |
+## 🏗 Architecture
 
-📌 **Players can buy hints anytime using available points.**  
-📌 **Points do NOT reset between games (carry over).**
-
----
-
-## 🔥 Streak & Challenge Bonuses
-- **Win Streak Bonus** → Consecutive wins increase the score multiplier.  
-- **Difficulty Progression Bonus** → Switching to a harder difficulty grants a +10% initial score boost.  
-- **"Almost Win" Compensation** → If a player is **90% close to winning**, they get 50% of their potential score.  
+```
+Main.java
+  |
+  v
+Hangman.java
+  ├── GameState enum
+  ├── UserSession (manages users)
+  ├── WordManager (loads JSON, selects words)
+  └── GameSession (executes game loop)
+       ├── Uses HintSystem, InputHandler, DisplayManager
+       └── Updates Score & Points via SQLite
+```
 
 ---
 
-## 📜 Game Rules
-1️⃣ **If a player wins and continues without changing category/difficulty, the score carries over.**  
-2️⃣ **Players only earn a score if they win the round.**  
-3️⃣ **Points are earned per letter and used for hints.**  
-4️⃣ **Switching difficulty resets the score but keeps points.**  
-5️⃣ **Players lose after exceeding maximum incorrect guesses.**  
-6️⃣ **Leaderboard is based on score, not points.**  
+## 🎮 Game Mechanics
+
+### 💰 Points vs. 🏆 Scores
+
+| Action                  | Points         | Scores        |
+|-------------------------|----------------|---------------|
+| Correct guess           | +1 to +3       | —             |
+| Complete word (win)     | —              | +total points |
+| Use hint                | −3 to −5       | —             |
+| Lose round              | 0              | 0             |
+
+- Points = Currency for hints, carried between games  
+- Scores = Only earned when winning; used for leaderboard  
+
+### 🛒 Hint Types
+
+| Hint                   | Cost (Points) |
+|------------------------|---------------|
+| Reveal a letter        | 5             |
+| Reveal fact about word | 3             |
+| Add extra guess        | 4             |
 
 ---
 
-## 🎯 Future Expansions
-- **Multiplayer Mode** with shared word pools.  
-- **Timed Challenges** (Earn more points for faster completion).  
-- **Daily Words & Streak Tracking**.  
+## 📂 Word Format (JSON)
+
+Sample `words.json`:
+
+```json
+{
+  "Animals": {
+    "description": "Creatures in the animal kingdom",
+    "easy": [
+      { "word": "cat", "hint": "Purrs and meows" }
+    ],
+    "medium": [
+      { "word": "giraffe", "hint": "Tallest land animal" }
+    ]
+  }
+}
+```
 
 ---
 
-## 🛠️ Developer Notes
-- **`GameSession`** → Runs gameplay loop, handles score & points.  
-- **`WordPicker`** → Selects a word based on category & difficulty.  
-- **`DisplayManager`** → Handles UI output (static methods).  
-- **`InputHandler`** → Manages user input.  
-- **`DatabaseManager` (Future)** → Stores leaderboard & user data (SQLite).  
+## 🛠 Installation & Running
+
+### Prerequisites
+
+- Java 17+
+- Maven
+
+### Run the game
+
+```bash
+mvn compile exec:java -Dexec.mainClass="com.example.Main"
+```
+
+### Run tests
+
+```bash
+mvn test
+```
 
 ---
+
+## 🧠 How the Game Works
+
+1. Start from a CLI main menu.
+2. Create or load a user.
+3. Pick a category and difficulty.
+4. Play by guessing letters.
+5. Use hints (points are deducted).
+6. Win to earn score and leaderboard rank.
+
+---
+
+## 🏆 Leaderboard & Stats
+
+- SQLite stores:
+  - `players` (user info)
+  - `scores` (per game)
+  - `points` (hint currency)
+- `Top 5` users by highest score shown at any time
+
+---
+
+## 📈 Future Features
+
+- Multiplayer mode (via sockets or REST)
+- Daily challenge words
+- Game streaks and badges
+- Visual frontend (JavaFX or web)
+- Export/import word sets
+
+---
+
+## 🤝 Contributing
+
+```bash
+# Fork, then:
+git checkout -b feat/my-feature
+git commit -m "Add new feature"
+git push origin feat/my-feature
+# Open a pull request
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
 
